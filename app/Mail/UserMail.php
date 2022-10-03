@@ -32,6 +32,6 @@ class UserMail extends Mailable
     public function build()
     {
 
-        return $this->view('view.user_mail')->with('users',$this->users);
+        return $this->view('user_mail')->with('users',$this->users);
     }
 }
