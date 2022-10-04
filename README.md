@@ -9,3 +9,7 @@
 ``` php artisan db:seed ```
 
 ``` ./vendor/phpunit/phpunit/phpunit ```
+
+Modify .env and set MAIL_MAILER=log to print emails in the log.
+
+Do a GET call on /api/users/mail and check the log.
