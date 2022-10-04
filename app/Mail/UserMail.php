@@ -12,16 +12,13 @@ class UserMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $users;
-    protected $posts;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(array $users )
+    public function __construct()
     {
-        $this->users = $users;
     }
 
     /**
@@ -31,7 +28,7 @@ class UserMail extends Mailable
      */
     public function build()
     {
-
-        return $this->view('user_mail')->with('users',$this->users);
+        $users = User::get();
+        return $this->view('user_mail')->with('users',$users);
     }
 }

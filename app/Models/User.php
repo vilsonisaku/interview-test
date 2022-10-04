@@ -24,6 +24,7 @@ class User extends Authenticatable
         'website',
         'email',
         'password',
+        'typi_code_id'
     ];
 
     /**
@@ -47,12 +48,16 @@ class User extends Authenticatable
 
 
     function company(){
-        return $this->hasMany(Company::class,'company_id');
+        return $this->belongsTo(Company::class,'company_id');
     }
 
 
     function address(){
         return $this->hasOne(UserAddress::class,'user_id');
     }
-    
+
+    function posts(){
+        return $this->hasMany(UserPost::class,'user_id');
+    }
+
 }

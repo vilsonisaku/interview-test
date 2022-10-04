@@ -2,28 +2,45 @@
 
 namespace App\ThirdParty;
 
+use App\Models\Company;
+use App\Models\User;
+use App\Models\UserAddress;
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Collection;
 use Psr\Http\Message\ResponseInterface;
 
 class TypiCode
 {
     const ENDPOINT = "https://jsonplaceholder.typicode.com/";
 
+    protected $users;
+    protected $posts;
 
-    public static function fetchUsers() {
+    public function fetchUsers() {
         $response = (new Client)->get(self::ENDPOINT."users");
-        return self::json( $response );
+        $this->users = collect(self::json( $response ));
+        return $this;
     }
 
+    public function getUsers(){
+        return $this->users;
+    }
 
-    public static function fetchPosts() {
+    public function getPosts(){
+        return $this->posts;
+    }
+
+    public function fetchPosts() {
         $response = (new Client)->get(self::ENDPOINT."posts");
-        return self::json( $response );
+        $this->posts = collect(self::json( $response ));
+        return $this;
     }
 
 
     public static function json(ResponseInterface $response ) {
-        return json_decode( $response->getBody()->getContents() );
+        return json_decode( $response->getBody()->getContents() , true );
     }
+
+
 
 }

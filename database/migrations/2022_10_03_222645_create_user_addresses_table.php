@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('suite');
             $table->string('city');
             $table->integer('zipcode');
-            $table->json('geo');
+            $table->string('geo_lat')->nullable();
+            $table->string('geo_lng')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

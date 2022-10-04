@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('users/mail',"UserController@sendEmail");
+Route::get('companies',"UserController@getCompanies");
