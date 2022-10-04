@@ -3,6 +3,9 @@
 ### Composer version 2.4.2 
 
 ``` composer install ```
+
 ``` php artisan migrate ```
+
 ``` php artisan db:seed ```
+
 ``` ./vendor/phpunit/phpunit/phpunit ```
